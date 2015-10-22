@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="loginJsonPage" extends="json-default" namespace="/">
+		<!-- 登录信息返回 -->
+		<action name="loginAdmin" class="zqu.neuedu.rear.action.AdminAction" method="loginAdmin">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+				
+		<!-- 评价晒图上传 -->
+		<action name="showPic" class="zqu.neuedu.rear.action.FileAction" method="uploadShowPic">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 返回错误信息 -->
+		<action name="responseError" class="zqu.neuedu.rear.action.ErrorAction" method="responseErrorJson">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 发邮件...找密码 -->	
+		<action name="getPassByEmail" class="zqu.neuedu.rear.action.AdminAction" method="getPassByEmail">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 通过邮件重设密码 -->
+		<action name="passwdResetById" class="zqu.neuedu.rear.action.AdminAction" method="passwdResetById">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+	</package>
+	<package name="commonJsonPage" extends="json-default" namespace="/MSCommonJson">
+		<!-- 修改个人资料 -->
+		<action name="adminInfoAUAdmin" class="zqu.neuedu.rear.action.AdminAction" method="adminInfoAUAdmin">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 修改密码 -->
+		<action name="changePasswdSubmit" class="zqu.neuedu.rear.action.AdminAction" method="changePasswdSubmit">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 上传单个图片 -->
+		<action name="uploadSamplePic" class="zqu.neuedu.rear.action.FileAction" method="uploadSamplePic">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- flash上传头像图片demo -->
+		<action name="uploadHeadPic" class="zqu.neuedu.rear.action.FileAction" method="uploadHeadPic">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 公司管理员主页数据 -->
+		<action name="indexPageGetHotGroupon" class="zqu.neuedu.rear.action.GrouponAction" method="indexPageGetHotGroupon">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="indexPageGetNewOrder" class="zqu.neuedu.rear.action.OrderAction" method="indexPageGetNewOrder">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 下拉框选择 -->
+		<action name="classifyListGetAllList" class="zqu.neuedu.rear.action.ClassifyAction" method="classifyListGetAllList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="reclassifyListGetListByClaId" class="zqu.neuedu.rear.action.ReclassifyAction" method="reclassifyListGetListByClaId">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="goodsListGetAllList" class="zqu.neuedu.rear.action.GoodsAction" method="goodsListGetAllList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="storeListGetAllList" class="zqu.neuedu.rear.action.StoreAction" method="storeListGetAllList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="storeListGetListByOrderId" class="zqu.neuedu.rear.action.OrderAction" method="storeListGetListByOrderId">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="cityListGetAllList" class="zqu.neuedu.rear.action.CityAction" method="cityListGetAllList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="areaListGetAllList" class="zqu.neuedu.rear.action.AreaAction" method="areaListGetAllList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- zhang get Area List By city_id -->
+		<action name="areaListGetListByCityId" class="zqu.neuedu.rear.action.AreaAction" method="areaListGetListByCityId">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		
+		<!-- 团购表 -->
+		<action name="grouponInfoAUGroupon" class="zqu.neuedu.rear.action.GrouponAction" method="grouponInfoAUGroupon">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="grouponListGetAllList" class="zqu.neuedu.rear.action.GrouponAction" method="grouponListGetAllList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="grouponListGetList" class="zqu.neuedu.rear.action.GrouponAction" method="grouponListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="grouponListDeleteGroupon" class="zqu.neuedu.rear.action.GrouponAction" method="grouponListDeleteGroupon">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="groupmapGetListById" class="zqu.neuedu.rear.action.GroupmapAction" method="groupmapGetListById">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="groupmapAddMap" class="zqu.neuedu.rear.action.GroupmapAction" method="groupmapAddMap">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="groupmapDelMap" class="zqu.neuedu.rear.action.GroupmapAction" method="groupmapDelMap">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="groupgoodsGetListById" class="zqu.neuedu.rear.action.GroupgoodsAction" method="groupgoodsGetListById">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="groupgoodsAddGoods" class="zqu.neuedu.rear.action.GroupgoodsAction" method="groupgoodsAddGoods">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="groupgoodsDelGoods" class="zqu.neuedu.rear.action.GroupgoodsAction" method="groupgoodsDelGoods">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 公司表 -->
+		<action name="companyDetailInfoAUCompany" class="zqu.neuedu.rear.action.CompanyAction" method="companyInfoAUCompany">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 店铺表 -->
+		<action name="storeInfoAUStore" class="zqu.neuedu.rear.action.StoreAction" method="storeInfoAUStore">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="storeListGetList" class="zqu.neuedu.rear.action.StoreAction" method="storeListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="storeListDeleteStore" class="zqu.neuedu.rear.action.StoreAction" method="storeListDeleteStore">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		
+		<!-- 商品表  -->
+		<action name="goodsInfoAUGoods" class="zqu.neuedu.rear.action.GoodsAction" method="goodsInfoAUGoods">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+
+		<action name="goodsListGetList" class="zqu.neuedu.rear.action.GoodsAction" method="goodsListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="goodsListDeleteGoods" class="zqu.neuedu.rear.action.GoodsAction" method="goodsListDeleteGoods">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 评论 -->
+		<action name="commentListGetList" class="zqu.neuedu.rear.action.CommentAction" method="commentListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="commentListdeleteComment" class="zqu.neuedu.rear.action.CommentAction" method="commentListdeleteComment">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 图表展示 -->
+		<action name="orderChartGetGrouponPrice" class="zqu.neuedu.rear.action.ChartAction" method="orderChartGetGrouponPrice">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="orderChartGetCompanyChart" class="zqu.neuedu.rear.action.ChartAction" method="orderChartGetCompanyChart">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 订单列表获取数据（列表显示，分页） -->
+		<action name="orderListGetList" class="zqu.neuedu.rear.action.OrderAction" method="orderListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="orderListdeleteOrder" class="zqu.neuedu.rear.action.OrderAction" method="orderListdeleteOrder">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="orderInfoAUOrder" class="zqu.neuedu.rear.action.OrderAction" method="orderInfoAUOrder">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 用户收藏列表 -->
+		<action name="favoriteListGetList" class="zqu.neuedu.rear.action.FavoriteAction" method="favoriteListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 用户地址列表 -->
+		<action name="addressListGetList" class="zqu.neuedu.rear.action.AddressAction" method="addressListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 用户列表Ajax获取数据 (列表显示，分页) -->
+		<action name="userListGetList" class="zqu.neuedu.rear.action.UserAction" method="userListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 删除用户 -->
+		<action name="userListDeleteUser" class="zqu.neuedu.rear.action.UserAction" method="userListDeleteUser">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+	</package>
+	
+	
+	
+	<package name="rearJsonPage" extends="json-default" namespace="/MSAdminJson">
+		<!-- <interceptors> <interceptor-stack name="myStack"> <interceptor-ref name="json"></interceptor-ref> <interceptor-ref name="defaultStack" /> </interceptor-stack> </interceptors> <default-interceptor-ref name="myStack" /> -->
+
+		<!-- 管理员列表Ajax获取数据 -->
+		<action name="adminListGetList" class="zqu.neuedu.rear.action.AdminAction" method="adminListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="adminListGetAllList" class="zqu.neuedu.rear.action.AdminAction" method="adminListGetAllList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="adminListDeleteAdmin" class="zqu.neuedu.rear.action.AdminAction" method="adminListDeleteAdmin">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+
+		<!-- 分类列表Ajax获取数据 -->
+		<action name="classifyListGetList" class="zqu.neuedu.rear.action.ClassifyAction" method="classifyListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="classifyInfoAUClassify" class="zqu.neuedu.rear.action.ClassifyAction" method="classifyInfoAUClassify">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="classifyListDeleteClassify" class="zqu.neuedu.rear.action.ClassifyAction" method="classifyListDeleteClassify">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+
+		<!-- 详细分类列表 -->
+		<action name="reclassifyListGetList" class="zqu.neuedu.rear.action.ReclassifyAction" method="reclassifyListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="reclassifyInfoAUReclassify" class="zqu.neuedu.rear.action.ReclassifyAction" method="reclassifyInfoAUReclassify">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="reclassifyListDeleteReclassify" class="zqu.neuedu.rear.action.ReclassifyAction" method="reclassifyListDeleteReclassify">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 权限表 -->
+		<action name="authorityInfoAUAuthority" class="zqu.neuedu.rear.action.AuthorityAction" method="authorityInfoAUAuthority">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="authorityListGetAllList" class="zqu.neuedu.rear.action.AuthorityAction" method="authorityListGetAllList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="authorityListGetList" class="zqu.neuedu.rear.action.AuthorityAction" method="authorityListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="authorityListDeleteAuthority" class="zqu.neuedu.rear.action.AuthorityAction" method="authorityListDeleteAuthority">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		
+		<!-- 角色 -->
+		<!-- 获取角色表的全部数据，不设过滤分页 -->
+		<action name="roleListGetAllList" class="zqu.neuedu.rear.action.RoleAction" method="roleListGetAllList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="roleInfoAURole" class="zqu.neuedu.rear.action.RoleAction" method="roleInfoAURole">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="roleListGetList" class="zqu.neuedu.rear.action.RoleAction" method="roleListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="roleListDeleteRole" class="zqu.neuedu.rear.action.RoleAction" method="roleListDeleteRole">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 公司 -->
+		<action name="companyInfoAUCompany" class="zqu.neuedu.rear.action.CompanyAction" method="companyInfoAUCompany">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="companyListGetAllList" class="zqu.neuedu.rear.action.CompanyAction" method="companyListGetAllList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="companyListGetList" class="zqu.neuedu.rear.action.CompanyAction" method="companyListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="companyListDeleteCompany" class="zqu.neuedu.rear.action.CompanyAction" method="companyListDeleteCompany">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 开店申请 -->
+		<action name="applyListGetList" class="zqu.neuedu.rear.action.ApplyAction" method="applyListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="applyListDeleteApply" class="zqu.neuedu.rear.action.ApplyAction" method="applyListDeleteApply">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="applyInfoAUApply" class="zqu.neuedu.rear.action.ApplyAction" method="applyInfoAUApply">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		
+		<!-- 添加/修改城市 -->
+		<action name="cityInfoAUCity" class="zqu.neuedu.rear.action.CityAction" method="cityInfoAUCity">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 删除城市 -->
+		<action name="cityListDeleteCity" class="zqu.neuedu.rear.action.CityAction" method="cityListDeleteCity">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 城市列表Ajax获取数据 (列表显示，分页) -->
+		<action name="cityListGetList" class="zqu.neuedu.rear.action.CityAction" method="cityListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+
+		<!-- 添加/修改区域 -->
+		<action name="areaInfoAUArea" class="zqu.neuedu.rear.action.AreaAction" method="areaInfoAUArea">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 删除区域 -->
+		<action name="areaListDeleteArea" class="zqu.neuedu.rear.action.AreaAction" method="areaListDeleteArea">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 区域列表Ajax获取数据 (列表显示，分页) -->
+		<action name="areaListGetList" class="zqu.neuedu.rear.action.AreaAction" method="areaListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+
+		
+		<!-- 添加/修改用户 -->
+		<action name="userInfoAUUser" class="zqu.neuedu.rear.action.UserAction" method="userInfoAUUser">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		
+		<!-- 图表展示 -->
+		<action name="orderChartGetMultiOrderNum" class="zqu.neuedu.rear.action.ChartAction" method="orderChartGetMultiOrderNum">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="orderChartGetMultiOrderPrice" class="zqu.neuedu.rear.action.ChartAction" method="orderChartGetMultiOrderPrice">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="orderChartGetMultiOrderPie" class="zqu.neuedu.rear.action.ChartAction" method="orderChartGetMultiOrderPie">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 设置 -->
+		<action name="indexSetting" class="zqu.neuedu.rear.action.SettingAction" method="setting">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+	</package>
+</struts>

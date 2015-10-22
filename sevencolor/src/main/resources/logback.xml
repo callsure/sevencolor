@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+  <jmxConfigurator />
+  <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->  
+    <property name="LOG_HOME" value="H:/log" />
+  <!-- 控制台输出日志 -->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+  	<!-- 日志输出编码 -->  
+    <Encoding>UTF-8</Encoding>
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </layout>
+  </appender>
+  <!-- 文件输出日志 (文件大小策略进行文件输出，超过指定大小对文件备份)-->
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  	<Encoding>UTF-8</Encoding>
+    <!-- <File>xxxx.log</File>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <FileNamePattern>xxxx.log.%i.bak</FileNamePattern>
+      <MinIndex>1</MinIndex>
+      <MaxIndex>12</MaxIndex>
+    </rollingPolicy> -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <FileNamePattern>${LOG_HOME}/sevencolor.log.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>60</MaxHistory>
+        </rollingPolicy>
+    <triggeringPolicy  class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <MaxFileSize>100MB</MaxFileSize>
+    </triggeringPolicy>
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+    </layout>
+  </appender>
+  
+  <!--这里指定logger name 是为jmx设置日志级别做铺垫 -->
+  <!-- <logger name="com.xxx.xxx">
+    <level value="INFO" />
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="FILE" />
+  </logger> -->
+  
+   <!-- show parameters for hibernate sql 专为 Hibernate 定制 -->  
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder"  level="TRACE" />  
+    <logger name="org.hibernate.type.descriptor.sql.BasicExtractor"  level="DEBUG" />  
+    <logger name="org.hibernate.SQL" level="DEBUG" />  
+    <logger name="org.hibernate.engine.QueryParameters" level="DEBUG" />  
+    <logger name="org.hibernate.engine.query.HQLQueryPlan" level="DEBUG" />
+    
+    <!-- 日志输出级别 -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />   
+        <appender-ref ref="FILE" />
+    </root>
+    
+    <!--日志异步到数据库 -->
+    <appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
+        <!--日志异步到数据库 -->
+        <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
+           <!--连接池 -->
+           <dataSource class="com.mchange.v2.c3p0.ComboPooledDataSource">
+              <driverClass>com.mysql.jdbc.Driver</driverClass>
+              <url>jdbc:mysql://localhost:3306/sevencolor</url>
+              <user>root</user>
+              <password>tiger</password>
+            </dataSource>
+        </connectionSource>
+  </appender>
+</configuration>

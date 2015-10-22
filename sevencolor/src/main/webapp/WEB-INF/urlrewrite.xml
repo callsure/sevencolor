@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 2.6//EN"  
+"http://tuckey.org/res/dtds/urlrewrite2.6.dtd">  
+<urlrewrite>  
+    <rule>  
+        <from>^/code_(\d+).html$</from>  
+        <to type="forward">/index?id=$1</to>  
+    </rule>
+    <!-- 详细订单信息页面 -->
+    <rule>  
+        <from>^/i/order/view_(\d+).html$</from>  
+        <to type="forward">/i/order/view?order_id=$1</to>  
+    </rule>
+    
+    <!-- 评价订单页面 -->
+    <rule>  
+        <from>^/i/order/comm_(\d+).html$</from>  
+        <to type="forward">/i/order/comment?order_id=$1</to>  
+    </rule>
+    <!-- 等待付款页面 -->
+    <rule>  
+        <from>^/i/order/pay_([0-9_]+).html$</from>  
+        <to type="forward">/i/order/pays?order_id=$1</to>  
+    </rule>
+    <!-- 团购详情页面 -->
+    <rule>  
+        <from>^/group/detail_(\d+).html$</from>  
+        <to type="forward">/detail?mutualGroupon.group_id=$1</to>  
+    </rule>
+     <!-- reclassify页面 -->
+    <rule>  
+        <from>^/group/recal_(\d+).html$</from>  
+        <to type="forward">/reclassify?mutualReclassify.recla_id=$1</to>  
+   </rule>
+   <rule>  
+        <from>^/group/cal_(\d+).html$</from>  
+        <to type="forward">/reclassify?mutualReclassify.cla_id=$1</to>  
+    </rule>
+    <rule>  
+        <from>^/group/gname_([^x00-xff]+).html$</from>  
+        <to type="forward">/reclassify?mutualReclassify.recla_name=$1</to>  
+    </rule>
+    <rule>  
+        <from>^/group/gname_(\w+).html$</from>  
+        <to type="forward">/reclassify?mutualReclassify.recla_name=$1</to>  
+    </rule>
+</urlrewrite>  

@@ -1,0 +1,211 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<link href="./images/admincg/admincg.css" rel="stylesheet" type="text/css">
+<title></title><script type="text/javascript">var IMGDIR = './images/';var attackevasive = '0';</script>
+<script src="./javascript/common.js" type="text/javascript"></script>
+<script src="./javascript/menu.js" type="text/javascript"></script>
+<script src="./javascript/ajax.js" type="text/javascript"></script>
+<script src="./javascript/frank.js" type="text/javascript"></script>
+<script type="text/javascript">
+function checkalloption(form, value) {
+	for(var i = 0; i < form.elements.length; i++) {
+		var e = form.elements[i];
+		if(e.value == value && e.type == 'radio' && e.disabled != true) {
+			e.checked = true;
+		}
+	}
+}
+function checkAll(type, form, value, checkall, changestyle) {
+	var checkall = checkall ? checkall : 'chkall';
+	for(var i = 0; i < form.elements.length; i++) {
+		var e = form.elements[i];
+		if(type == 'option' && e.type == 'radio' && e.value == value && e.disabled != true) {
+			e.checked = true;
+		} else if(type == 'value' && e.type == 'checkbox' && e.getAttribute('chkvalue') == value) {
+			e.checked = form.elements[checkall].checked;
+		} else if(type == 'prefix' && e.name && e.name != checkall && (!value || (value && e.name.match(value)))) {
+			e.checked = form.elements[checkall].checked;
+			if(changestyle && e.parentNode && e.parentNode.tagName.toLowerCase() == 'li') {
+				e.parentNode.className = e.checked ? 'checked' : '';
+			}
+		}
+	}
+}
+
+function checkallvalue(form, value, checkall) {
+	var checkall = checkall ? checkall : 'chkall';
+	for(var i = 0; i < form.elements.length; i++) {
+		var e = form.elements[i];
+		if(e.type == 'checkbox' && e.value == value) {
+			e.checked = form.elements[checkall].checked;
+		}
+	}
+}
+
+function zoomtextarea(objname, zoom) {
+	zoomsize = zoom ? 10 : -10;
+	obj = $(objname);
+	if(obj.rows + zoomsize > 0 && obj.cols + zoomsize * 3 > 0) {
+		obj.rows += zoomsize;
+		obj.cols += zoomsize * 3;
+	}
+}
+
+function redirect(url) {
+	window.location.replace(url);
+}
+
+var collapsed = getcookie('cg_szyx_cookie_collapse');
+function collapse_change(menucount) {
+
+	if($('menu_' + menucount).style.display == 'none') {
+		$('menu_' + menucount).style.display = '';collapsed = collapsed.replace('[' + menucount + ']' , '');
+		$('menuimg_' + menucount).src = './images//admincg/menu_reduce.gif';
+		
+	} else {
+
+		$('menu_' + menucount).style.display = 'none';collapsed += '[' + menucount + ']';
+		$('menuimg_' + menucount).src = './images//admincg/menu_add.gif';
+	}
+	setcookie('cg_szyx_cookie_collapse', collapsed, 2592000);
+}
+</script>
+</head>
+
+<body leftmargin="10" topmargin="10">
+<div id="append_parent"></div>
+<table width="99%" align="center" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
+<script language="JavaScript">
+<!-- 
+function openwinchuhuo(url) {
+var iWidth=600; //窗口宽度 
+var iHeight=600;//窗口高度 
+var iTop=(window.screen.height-iHeight)/2; 
+var iLeft=(window.screen.width-iWidth)/2; 
+window.open(url,"Detail1617359343","Scrollbars=no,Toolbar=no,Location=no,Direction=no,Resizeable=no, Width="+iWidth+" ,Height="+iHeight+",top="+iTop+",left="+iLeft); 
+}
+
+//--> 
+</script>
+	<style media="print"> .Noprint{display:none;} </style> <table class="Noprint" width="100%" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide"><tbody><tr><td><table width="100%" style="border:none;" border="0" cellpadding="0" cellspacing="0"><tbody><tr style="border:none;"><td style="border:none;" width="15%"><a href="#" onclick=" parent.main.location='?action=home';return false;">位置</a>&nbsp;»&nbsp;自己操作日志</td>
+		<td width="85%" style="border:none;text-align:right;padding-right:10px;"><a href="levelLogs.html" target="main"><b>越级操作日志</b></a> | <a href="myOperaLogs.html" target="main" class="meuntop"><b>自己操作日志</b></a> | <a href="blockingLogs.html" target="main"><b>拦货金额日志</b></a> | <a href="selectLogs.html" target="main"><b>会员快选日志</b></a></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table><br><script type="text/javascript">
+function show_play(menucount){
+	if($('show_' + menucount).style.display == 'none') {
+		$('show_' + menucount).style.display = '';
+	} else {
+		$('show_' + menucount).style.display = 'none';
+	}
+}
+</script>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tbody><tr class="header"><td colspan="5">自己操作日志</td></tr>
+<form method="post" action="index.php?action=logsuser"></form>
+<input type="hidden" name="formhash" value="82c0edaa">
+<tr class="altbg2">
+<td width="90">被操作账号 </td>
+<td width="100"><input type="text" name="s_usernameto" id="s_usernameto" maxlength="16" value="" style="width:90px"></td>
+<td width="*"><input class="button" type="submit" value="提 交"></td>
+</tr>
+
+</tbody></table>
+<br>
+<form method="post" action="index.php?action=settings&amp;action=basic">
+<input type="hidden" name="formhash" value="82c0edaa">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tbody><tr class="header"><td width="8%">操作账号</td><td width="14%">被操作账号</td><td width="60%">操作内容</td><td width="10%">操作时间</td><td width="8%">操作IP</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">pp1388(总代理)</td><td class="altbg2">密码已被<font color="red">修改</font>，</td><td class="altbg1">10-13 12:46:18</td><td class="altbg2">113.110.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">pp1388(总代理)</td><td class="altbg2">信用额度:0改成<font color="red">10</font>，</td><td class="altbg1">10-13 12:43:02</td><td class="altbg2">113.110.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">pp1388(总代理)</td><td class="altbg2">启/停用:停用改成<font color="red">启用</font>，</td><td class="altbg1">10-13 12:42:53</td><td class="altbg2">113.110.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">h6236(总代理)</td><td class="altbg2">信用额度:820000改成<font color="red">750000</font>，</td><td class="altbg1">10-13 12:42:23</td><td class="altbg2">113.110.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">pp1388(总代理)</td><td class="altbg2">启/停用:启用改成<font color="red">停用</font>，</td><td class="altbg1">10-13 12:39:28</td><td class="altbg2">113.110.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">pp1388(总代理)</td><td class="altbg2">密码已被<font color="red">修改</font>，</td><td class="altbg1">10-13 12:36:49</td><td class="altbg2">113.110.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">pp1388(总代理)</td><td class="altbg2"><a href="javascript:show_play('223328');">更多</a></td><td class="altbg1">10-13 12:36:26</td><td class="altbg2">113.110.*.*</td></tr>
+<tr style="display:none" id="show_223328"><td colspan="5"><table width="99%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 1px solid #268324;">
+				<tbody><tr align="center">
+				<td width="50%"><b>类别</b></td>
+				<td width="50%"><b>赚水</b></td>
+				</tr><tr><td>口口XX</td><td>0.002改成<font color="red">0.005</font>&nbsp;</td></tr><tr><td>口X口X</td><td>0.002改成<font color="red">0.005</font>&nbsp;</td></tr><tr><td>口XX口</td><td>0.002改成<font color="red">0.005</font>&nbsp;</td></tr><tr><td>X口X口</td><td>0.002改成<font color="red">0.005</font>&nbsp;</td></tr><tr><td>X口口X</td><td>0.002改成<font color="red">0.005</font>&nbsp;</td></tr><tr><td>XX口口</td><td>0.002改成<font color="red">0.005</font>&nbsp;</td></tr><tr><td>口口口X</td><td>0.002改成<font color="red">0.005</font>&nbsp;</td></tr><tr><td>口口X口</td><td>0.002改成<font color="red">0.005</font>&nbsp;</td></tr><tr><td>口X口口</td><td>0.002改成<font color="red">0.005</font>&nbsp;</td></tr><tr><td>X口口口</td><td>0.002改成<font color="red">0.005</font>&nbsp;</td></tr><tr><td>四定位</td><td>0.002改成<font color="red">0.005</font>&nbsp;</td></tr></tbody></table></td></tr><tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">hhh001(总代理)</td><td class="altbg2">信用额度:100000改成<font color="red">250000</font>，</td><td class="altbg1">10-10 14:06:24</td><td class="altbg2">116.28.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">h6236(总代理)</td><td class="altbg2">信用额度:970000改成<font color="red">820000</font>，</td><td class="altbg1">10-10 14:06:10</td><td class="altbg2">116.28.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">h6236(总代理)</td><td class="altbg2">信用额度:850000改成<font color="red">970000</font>，</td><td class="altbg1">10-08 12:25:11</td><td class="altbg2">14.210.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">pp9001(总代理)</td><td class="altbg2">信用额度:720000改成<font color="red">900000</font>，</td><td class="altbg1">10-08 12:24:46</td><td class="altbg2">14.210.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">hhh001(总代理)</td><td class="altbg2">信用额度:360000改成<font color="red">100000</font>，</td><td class="altbg1">10-08 12:24:25</td><td class="altbg2">14.210.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">hhh001(总代理)</td><td class="altbg2">信用额度:314000改成<font color="red">360000</font>，</td><td class="altbg1">10-06 15:45:25</td><td class="altbg2">14.119.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">hhh001(总代理)</td><td class="altbg2">信用额度:400000改成<font color="red">314000</font>，</td><td class="altbg1">10-06 12:40:59</td><td class="altbg2">223.73.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">pp9001(总代理)</td><td class="altbg2">信用额度:600000改成<font color="red">720000</font>，</td><td class="altbg1">10-06 11:33:11</td><td class="altbg2">223.73.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">h6236(总代理)</td><td class="altbg2">信用额度:700000改成<font color="red">850000</font>，</td><td class="altbg1">10-06 11:31:34</td><td class="altbg2">223.73.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">hhh001(总代理)</td><td class="altbg2">信用额度:600000改成<font color="red">400000</font>，</td><td class="altbg1">10-06 11:30:49</td><td class="altbg2">223.73.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">hhh001(总代理)</td><td class="altbg2">信用额度:400000改成<font color="red">600000</font>，</td><td class="altbg1">10-06 11:26:23</td><td class="altbg2">223.73.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">h6236(总代理)</td><td class="altbg2">信用额度:800000改成<font color="red">700000</font>，</td><td class="altbg1">10-06 11:25:50</td><td class="altbg2">223.73.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">hhh001(总代理)</td><td class="altbg2">信用额度:50000改成<font color="red">400000</font>，</td><td class="altbg1">10-06 11:04:38</td><td class="altbg2">223.73.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">mm9893(总代理)</td><td class="altbg2">信用额度:0改成<font color="red">30000</font>，</td><td class="altbg1">10-06 10:17:40</td><td class="altbg2">223.73.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">pp1388(总代理)</td><td class="altbg2"><a href="javascript:show_play('208225');">更多</a></td><td class="altbg1">10-03 23:17:25</td><td class="altbg2">223.73.*.*</td></tr>
+<tr style="display:none" id="show_208225"><td colspan="5"><table width="99%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 1px solid #268324;">
+				<tbody><tr align="center">
+				<td width="50%"><b>类别</b></td>
+				<td width="50%"><b>赚水</b></td>
+				</tr><tr><td>口口XX</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>口X口X</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>口XX口</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>X口X口</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>X口口X</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>XX口口</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>口口口X</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>口口X口</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>口X口口</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>X口口口</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>四定位</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr></tbody></table></td></tr><tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">mm9893(总代理)</td><td class="altbg2"><a href="javascript:show_play('208224');">更多</a></td><td class="altbg1">10-03 23:17:10</td><td class="altbg2">223.73.*.*</td></tr>
+<tr style="display:none" id="show_208224"><td colspan="5"><table width="99%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 1px solid #268324;">
+				<tbody><tr align="center">
+				<td width="50%"><b>类别</b></td>
+				<td width="50%"><b>赚水</b></td>
+				</tr><tr><td>口口XX</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>口X口X</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>口XX口</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>X口X口</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>X口口X</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>XX口口</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>口口口X</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>口口X口</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>口X口口</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>X口口口</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>四定位</td><td>0.003改成<font color="red">0.002</font>&nbsp;</td></tr></tbody></table></td></tr><tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">h6236(总代理)</td><td class="altbg2">信用额度:700000改成<font color="red">800000</font>，</td><td class="altbg1">10-03 23:14:30</td><td class="altbg2">223.73.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">pp9001(总代理)</td><td class="altbg2">信用额度:250000改成<font color="red">600000</font>，</td><td class="altbg1">10-03 22:48:19</td><td class="altbg2">223.73.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">pp9001(总代理)</td><td class="altbg2">信用额度:0改成<font color="red">250000</font>，<a href="javascript:show_play('207992');">更多</a></td><td class="altbg1">10-03 15:54:49</td><td class="altbg2">183.18.*.*</td></tr>
+<tr style="display:none" id="show_207992"><td colspan="5"><table width="99%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 1px solid #268324;">
+				<tbody><tr align="center">
+				<td width="50%"><b>类别</b></td>
+				<td width="50%"><b>赚水</b></td>
+				</tr><tr><td>口口XX</td><td>0改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>口X口X</td><td>0改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>口XX口</td><td>0改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>X口X口</td><td>0改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>X口口X</td><td>0改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>XX口口</td><td>0改成<font color="red">0.002</font>&nbsp;</td></tr><tr><td>口口口X</td><td>0改成<font color="red">0.004</font>&nbsp;</td></tr><tr><td>口口X口</td><td>0改成<font color="red">0.004</font>&nbsp;</td></tr><tr><td>口X口口</td><td>0改成<font color="red">0.004</font>&nbsp;</td></tr><tr><td>X口口口</td><td>0改成<font color="red">0.004</font>&nbsp;</td></tr><tr><td>四定位</td><td>0改成<font color="red">0.004</font>&nbsp;</td></tr></tbody></table></td></tr><tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">mm9893(总代理)</td><td class="altbg2">信用额度:100000改成<font color="red">0</font>，</td><td class="altbg1">10-03 15:44:29</td><td class="altbg2">183.18.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">h6236(总代理)</td><td class="altbg2"><a href="javascript:show_play('204220');">更多</a></td><td class="altbg1">10-01 02:14:39</td><td class="altbg2">223.73.*.*</td></tr>
+<tr style="display:none" id="show_204220"><td colspan="5"><table width="99%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 1px solid #268324;">
+				<tbody><tr align="center">
+				<td width="50%"><b>类别</b></td>
+				<td width="50%"><b>赚水</b></td>
+				</tr><tr><td>口口口X</td><td>0.007改成<font color="red">0.009</font>&nbsp;</td></tr><tr><td>口口X口</td><td>0.007改成<font color="red">0.009</font>&nbsp;</td></tr><tr><td>口X口口</td><td>0.007改成<font color="red">0.009</font>&nbsp;</td></tr><tr><td>X口口口</td><td>0.007改成<font color="red">0.009</font>&nbsp;</td></tr><tr><td>四定位</td><td>0.007改成<font color="red">0.009</font>&nbsp;</td></tr></tbody></table></td></tr><tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">h6236(总代理)</td><td class="altbg2">信用额度:600000改成<font color="red">700000</font>，</td><td class="altbg1">09-29 18:52:42</td><td class="altbg2">14.16.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">pp1388(总代理)</td><td class="altbg2">信用额度:150000改成<font color="red">0</font>，</td><td class="altbg1">09-29 18:51:14</td><td class="altbg2">14.16.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">hhh001(总代理)</td><td class="altbg2">信用额度:0改成<font color="red">50000</font>，</td><td class="altbg1">09-28 16:11:49</td><td class="altbg2">116.28.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">h6236(总代理)</td><td class="altbg2">信用额度:700000改成<font color="red">600000</font>，</td><td class="altbg1">09-28 16:10:53</td><td class="altbg2">116.28.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">pp1388(总代理)</td><td class="altbg2">信用额度:200000改成<font color="red">150000</font>，</td><td class="altbg1">09-28 16:10:18</td><td class="altbg2">116.28.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">pp1388(总代理)</td><td class="altbg2">信用额度:0改成<font color="red">200000</font>，<a href="javascript:show_play('200378');">更多</a></td><td class="altbg1">09-28 14:00:21</td><td class="altbg2">116.28.*.*</td></tr>
+<tr style="display:none" id="show_200378"><td colspan="5"><table width="99%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 1px solid #268324;">
+				<tbody><tr align="center">
+				<td width="50%"><b>类别</b></td>
+				<td width="50%"><b>赚水</b></td>
+				</tr><tr><td>口口XX</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>口X口X</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>口XX口</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>X口X口</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>X口口X</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>XX口口</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>口口口X</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>口口X口</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>口X口口</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>X口口口</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>四定位</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr></tbody></table></td></tr><tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">h6236(总代理)</td><td class="altbg2">信用额度:800000改成<font color="red">700000</font>，</td><td class="altbg1">09-28 13:59:11</td><td class="altbg2">116.28.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">mm9893(总代理)</td><td class="altbg2">信用额度:0改成<font color="red">100000</font>，<a href="javascript:show_play('200362');">更多</a></td><td class="altbg1">09-28 13:48:12</td><td class="altbg2">116.28.*.*</td></tr>
+<tr style="display:none" id="show_200362"><td colspan="5"><table width="99%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 1px solid #268324;">
+				<tbody><tr align="center">
+				<td width="50%"><b>类别</b></td>
+				<td width="50%"><b>赚水</b></td>
+				</tr><tr><td>口口XX</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>口X口X</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>口XX口</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>X口X口</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>X口口X</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>XX口口</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>口口口X</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>口口X口</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>口X口口</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>X口口口</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr><tr><td>四定位</td><td>0改成<font color="red">0.003</font>&nbsp;</td></tr></tbody></table></td></tr><tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">h6236(总代理)</td><td class="altbg2">信用额度:1000000改成<font color="red">800000</font>，</td><td class="altbg1">09-28 13:47:21</td><td class="altbg2">116.28.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">h6236(总代理)</td><td class="altbg2"><a href="javascript:show_play('200266');">更多</a></td><td class="altbg1">09-28 13:27:32</td><td class="altbg2">116.28.*.*</td></tr>
+<tr style="display:none" id="show_200266"><td colspan="5"><table width="99%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 1px solid #268324;">
+				<tbody><tr align="center">
+				<td width="50%"><b>类别</b></td>
+				<td width="50%"><b>赚水</b></td>
+				</tr><tr><td>口口XX</td><td>0.007改成<font color="red">0.005</font>&nbsp;</td></tr><tr><td>口X口X</td><td>0.007改成<font color="red">0.005</font>&nbsp;</td></tr><tr><td>口XX口</td><td>0.007改成<font color="red">0.005</font>&nbsp;</td></tr><tr><td>X口X口</td><td>0.007改成<font color="red">0.005</font>&nbsp;</td></tr><tr><td>X口口X</td><td>0.007改成<font color="red">0.005</font>&nbsp;</td></tr><tr><td>XX口口</td><td>0.007改成<font color="red">0.005</font>&nbsp;</td></tr></tbody></table></td></tr><tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">h6236(总代理)</td><td class="altbg2">信用额度:500000改成<font color="red">1000000</font>，</td><td class="altbg1">09-28 13:25:09</td><td class="altbg2">116.28.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">h6236(总代理)</td><td class="altbg2"><a href="javascript:show_play('200105');">更多</a></td><td class="altbg1">09-28 13:04:29</td><td class="altbg2">116.28.*.*</td></tr>
+<tr style="display:none" id="show_200105"><td colspan="5"><table width="99%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 1px solid #268324;">
+				<tbody><tr align="center">
+				<td width="50%"><b>类别</b></td>
+				<td width="50%"><b>赚水</b></td>
+				</tr><tr><td>口口XX</td><td>0改成<font color="red">0.007</font>&nbsp;</td></tr><tr><td>口X口X</td><td>0改成<font color="red">0.007</font>&nbsp;</td></tr><tr><td>口XX口</td><td>0改成<font color="red">0.007</font>&nbsp;</td></tr><tr><td>X口X口</td><td>0改成<font color="red">0.007</font>&nbsp;</td></tr><tr><td>X口口X</td><td>0改成<font color="red">0.007</font>&nbsp;</td></tr><tr><td>XX口口</td><td>0改成<font color="red">0.007</font>&nbsp;</td></tr><tr><td>口口口X</td><td>0改成<font color="red">0.007</font>&nbsp;</td></tr><tr><td>口口X口</td><td>0改成<font color="red">0.007</font>&nbsp;</td></tr><tr><td>口X口口</td><td>0改成<font color="red">0.007</font>&nbsp;</td></tr><tr><td>X口口口</td><td>0改成<font color="red">0.007</font>&nbsp;</td></tr><tr><td>四定位</td><td>0改成<font color="red">0.007</font>&nbsp;</td></tr></tbody></table></td></tr><tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">h6236(总代理)</td><td class="altbg2">信用额度:100000改成<font color="red">500000</font>，</td><td class="altbg1">09-28 12:48:37</td><td class="altbg2">116.28.*.*</td></tr>
+<tr onmouseover="hover1(this);" onmouseout="hover2(this);" class="smalltxt hover"> <td class="altbg2">bb7(股东)</td><td class="altbg1">h6236(总代理)</td><td class="altbg2">信用额度:0改成<font color="red">100000</font>，</td><td class="altbg1">09-28 12:44:48</td><td class="altbg2">116.28.*.*</td></tr>
+
+</tbody></table>
+</form>
+</td></tr></tbody></table>
+<br><br><div class="footer Noprint"><hr size="0" noshade="" color="BORDERCOLOR" width="80%">
+<b></b> V2.0 &nbsp;©  <b>
+</b><span class="smalltxt"></span>
+usetime:0.063140, 
+mysqlquery:5
+</div>
+<noscript>&lt;iframe src=*.html&gt;&lt;/iframe&gt;</noscript>
+
+
+
+
+</body></html>

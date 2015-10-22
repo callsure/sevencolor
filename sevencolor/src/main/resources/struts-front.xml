@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="frontPackage" extends="struts-default" namespace="/">
+		<!-- 前台界面登录前可以进行的action操作 -->
+		<action name="index" class="zqu.neuedu.front.action.IndexAction" method="indexPage">
+			<!-- 主页 -->
+			<result name="index">/WEB-INF/front/index.jsp</result>
+		</action>
+		<!-- 今日新单 -->
+		<action name="newGroupon" class="zqu.neuedu.front.action.IndexAction" method="newGrouponPage">
+			<result name="newGroupon">/WEB-INF/front/newGroupon.jsp</result>
+		</action>
+		<!-- 用户登录页 -->
+		<action name="login" class="zqu.neuedu.front.action.UserAction" method="loginPage">
+			<result name="login">/WEB-INF/front/loginUser.jsp</result>
+		</action>
+		<!-- 用户注册页 -->
+		<action name="regist" class="zqu.neuedu.front.action.UserAction" method="registPage">
+			<result name="regist">/WEB-INF/front/registUser.jsp</result>
+		</action>
+		<!-- 用户退出页 -->
+		<action name="logout" class="zqu.neuedu.front.action.UserAction" method="logoutPage">
+			<result name="logout">/WEB-INF/front/logoutUser.jsp</result>
+		</action>
+		<!-- 找回密码页面 -->
+		<action name="resetreq" class="zqu.neuedu.front.action.UserAction" method="resetreqPage">
+			<result name="resetreq">/WEB-INF/front/resetreqUser.jsp</result>
+			<result name="resetreq_success_page">/WEB-INF/front/resetreqUser_success.jsp</result>
+		 	<result name="resetreq_success" type="redirect">resetreq</result>
+		</action>
+		<!-- 找回密码-修改密码页面 -->
+		<action name="resetpass" class="zqu.neuedu.front.action.UserAction" method="resetpassPage">
+			<result name="resetreq">/WEB-INF/front/resetreqUser.jsp</result>
+			<result name="resetpass">/WEB-INF/front/resetpassUser.jsp</result>
+			<result name="resetpass_success_page">/WEB-INF/front/resetpassUser_success.jsp</result>
+			<result name="resetpass_success"  type="redirect">resetpass</result>
+		</action>
+		<!-- 商品详细信息页 -->
+		<action name="detail" class="zqu.neuedu.front.action.GrouponAction" method="groupOnPage">
+			<result name="groupOn">/WEB-INF/front/groupOnDetail.jsp</result>
+		</action>
+		<!-- 切换城市页 -->
+		<action name="changeCity" class="zqu.neuedu.front.action.CityAreaAction" method="changeCityPage">
+			<result name="changeCity">/WEB-INF/front/changeCity.jsp</result>
+		</action>
+		<!-- 一级分类 -->
+		<action name="classify" class="zqu.neuedu.front.action.ClassifyAction" method="classifyPage">
+			<result name="classify">/WEB-INF/front/classify.jsp</result>
+		</action>
+		<!-- 二级分类 -->
+		<action name="reclassify" class="zqu.neuedu.front.action.ReclassifyAction" method="reclassifyPage">
+			<result name="reclassify">/WEB-INF/front/reclassify.jsp</result>
+		</action>
+		<!-- 商品列表 -->
+		<action name="category" class="zqu.neuedu.front.action.CateoryAction" method="cateoryPage">
+			<result name="cateory">/WEB-INF/front/category.jsp</result>
+		</action>
+		<!-- 身边团购 -->
+		<action name="around" class="zqu.neuedu.front.action.AroundAction" method="aroundPage">
+			<result name="around">/WEB-INF/front/around.jsp</result>
+		</action>
+		
+	</package>
+	
+	<!-- 购物车 -->
+	<package name="cartPackage" extends="struts-default" namespace="/i/cart">
+		<!-- 购物车 -->
+		<action name="show" class="zqu.neuedu.front.action.CartAction" method="cartPage">
+			<result name="cart">/WEB-INF/front/new_cart.jsp</result>
+		</action>
+	</package>	
+	
+	
+	<package name="accountPackage" extends="struts-default" namespace="/i/account">
+		<!-- 前台界面登录后可以进行的action操作 -->
+		<action name="addresses" class="zqu.neuedu.front.action.UserAction" method="userAddresssPage">
+			<result name="userAddress">/WEB-INF/front/login/userAddresses.jsp</result>
+		</action>
+		<action name="address" class="zqu.neuedu.front.action.UserAction" method="gotoaddressInfoPage">
+			<result name="userAddress">/WEB-INF/front/login/userAddresses.jsp</result>
+		</action>
+		
+		<action name="fav" class="zqu.neuedu.front.action.UserAction" method="userFavouritePage">
+			<result name="userFavourite">/WEB-INF/front/login/userFavourite.jsp</result>
+		</action>
+		<action name="setting" class="zqu.neuedu.front.action.UserAction" method="userSettingsPage">
+			<result name="userSettings">/WEB-INF/front/login/userSettings.jsp</result>
+		</action>
+		<action name="password" class="zqu.neuedu.front.action.UserAction" method="userPasswdPage">
+			<result name="userPasswd">/WEB-INF/front/login/userPasswd.jsp</result>
+		</action>
+		<action name="mobile_bind" class="zqu.neuedu.front.action.UserAction" method="userPhoneBindPage">
+			<result name="userPhoneBind">/WEB-INF/front/login/userPhoneBind.jsp</result>
+		</action>
+		<action name="change_email" class="zqu.neuedu.front.action.ResetAction" method="changeUserEmailPage">
+			<result name="change_email_step1">/WEB-INF/front/login/userEmail_1.jsp</result>
+			<result name="change_email_step2">/WEB-INF/front/login/userEmail_2.jsp</result>
+			<result name="send_email_success" type="redirect">change_email?step=3</result>
+			<result name="change_email_step3">/WEB-INF/front/login/userEmail_3.jsp</result>
+		</action>
+		<action name="verify_email" class="zqu.neuedu.front.action.ResetAction" method="verifyUserEmailPage">
+			<result name="change_email_step1">/WEB-INF/front/login/userEmail_1.jsp</result>
+			<result name="success">/WEB-INF/front/login/verifyEmail.jsp</result>
+		</action>
+		
+	</package>
+	
+	<!-- 提交/支付订单等 -->
+	<package name="orderPackage" extends="struts-default" namespace="/i/order">
+		<global-results>
+			<result name="message">/WEB-INF/front/logoutUser.jsp</result>
+		</global-results>
+		<action name="list" class="zqu.neuedu.front.action.UserAction" method="userOrderListPage">
+			<result name="userOrderList1">/WEB-INF/front/login/userOrderList.jsp</result>
+			<result name="userOrderList" type="chain">
+				 <param name="actionName">all</param>
+           		 <param name="namespace">/i/order/list</param>
+			</result>
+		</action>
+		<action name="confirmation" class="zqu.neuedu.front.action.OrderAction" method="confirmToOrder">
+			<result name="confirmation">/WEB-INF/front/login/orderConfirmation.jsp</result>
+		</action>
+		<action name="pay" class="zqu.neuedu.front.action.OrderAction" method="orderPay">
+			<result name="orderPay">/WEB-INF/front/login/orderPay.jsp</result>
+			<result name="index">/WEB-INF/front/index.jsp</result>
+			<result name="change_success" type="redirect">pay</result>
+		</action>
+		<action name="pays" class="zqu.neuedu.front.action.OrderAction" method="orderPays">
+			<result name="pays">/WEB-INF/front/login/orderPay.jsp</result>
+		</action>
+		<action name="check" class="zqu.neuedu.front.action.OrderAction" method="checkOrder">
+			<result name="checkPage">/WEB-INF/front/login/orderCheck.jsp</result>
+			<result name="index">/WEB-INF/front/index.jsp</result>
+		</action>
+		<action name="payment_status" class="zqu.neuedu.front.action.OrderAction" method="setPaymentStatus">
+			<result name="pay_fail">/WEB-INF/front/login/pay_status.jsp</result>
+		</action>
+		<action name="view" class="zqu.neuedu.front.action.OrderAction" method="getOrderView">
+			<result name="login">/WEB-INF/front/loginUser.jsp</result>
+			<result name="view">/WEB-INF/front/login/orderView.jsp</result>
+		</action>
+		<action name="comment" class="zqu.neuedu.front.action.OrderAction" method="commentOrderPage">
+			<result name="login">/WEB-INF/front/loginUser.jsp</result>
+			<result name="comment">/WEB-INF/front/login/comment.jsp</result>
+			<result name="comment_a">/WEB-INF/front/login/commentA.jsp</result>
+		</action>
+
+	</package>
+	<!-- 用户订单列表 -->
+	<package name="orderlistPackage" extends="struts-default" namespace="/i/order/list">
+		<action name="all" class="zqu.neuedu.front.action.OrderAction" method="getAllList">
+			<result name="login">/WEB-INF/front/loginUser.jsp</result>
+			<result name="list">/WEB-INF/front/login/userOrderList.jsp</result>
+		</action>
+		<action name="unpaid" class="zqu.neuedu.front.action.OrderAction" method="getUnpaidList">
+			<result name="login">/WEB-INF/front/loginUser.jsp</result>
+			<result name="list">/WEB-INF/front/login/userOrderList.jsp</result>
+		</action>
+		<action name="unused" class="zqu.neuedu.front.action.OrderAction" method="getUnusedList">
+			<result name="login">/WEB-INF/front/loginUser.jsp</result>
+			<result name="list">/WEB-INF/front/login/userOrderList.jsp</result>
+		</action>
+		<action name="used" class="zqu.neuedu.front.action.OrderAction" method="getUsedList">
+			<result name="login">/WEB-INF/front/loginUser.jsp</result>
+			<result name="list">/WEB-INF/front/login/userOrderList.jsp</result>
+		</action>
+		<action name="expired" class="zqu.neuedu.front.action.OrderAction" method="getExpiredList">
+			<result name="login">/WEB-INF/front/loginUser.jsp</result>
+			<result name="list">/WEB-INF/front/login/userOrderList.jsp</result>
+		</action>
+	</package>
+	<!-- 帮助中心 -->
+	<package name="helpPackage" extends="struts-default" namespace="/help">
+		<action name="aboutus" class="zqu.neuedu.front.action.HelpAction" method="aboutus">
+			<result name="aboutus">/WEB-INF/front/help/about_us.jsp</result>
+		</action>
+		<action name="helping" class="zqu.neuedu.front.action.HelpAction" method="helping">
+			<result name="helping">/WEB-INF/front/help/helping.jsp</result>
+		</action>
+		<action name="problem" class="zqu.neuedu.front.action.HelpAction" method="problem">
+			<result name="problem">/WEB-INF/front/help/problem.jsp</result>
+		</action>
+		<action name="user_terms" class="zqu.neuedu.front.action.HelpAction" method="user_terms">
+			<result name="user_terms">/WEB-INF/front/help/user_terms.jsp</result>
+		</action>
+		<action name="invite_friends" class="zqu.neuedu.front.action.HelpAction" method="invite_friends">
+			<result name="invite_friends">/WEB-INF/front/help/invite_friends.jsp</result>
+		</action>
+		<action name="email_subscribe" class="zqu.neuedu.front.action.HelpAction" method="email_subscribe">
+			<result name="email_subscribe">/WEB-INF/front/help/email_subscribe.jsp</result>
+		</action>
+		<action name="promocards" class="zqu.neuedu.front.action.HelpAction" method="promocards">
+			<result name="promocards">/WEB-INF/front/help/promocards.jsp</result>
+		</action>
+		<action name="wangyiemail" class="zqu.neuedu.front.action.HelpAction" method="wangyiemail">
+			<result name="wangyiemail">/WEB-INF/front/help/wangyiemail.jsp</result>
+		</action>
+		<action name="QQemail" class="zqu.neuedu.front.action.HelpAction" method="QQemail">
+			<result name="QQemail">/WEB-INF/front/help/QQemail.jsp</result>
+		</action>
+		<action name="pay_online" class="zqu.neuedu.front.action.HelpAction" method="pay_online">
+			<result name="pay_online">/WEB-INF/front/help/pay_online.jsp</result>
+		</action>
+		<action name="pay_cod" class="zqu.neuedu.front.action.HelpAction" method="pay_cod">
+			<result name="pay_cod">/WEB-INF/front/help/pay_cod.jsp</result>
+		</action>
+		<action name="founder" class="zqu.neuedu.front.action.HelpAction" method="founder">
+			<result name="founder">/WEB-INF/front/help/founder.jsp</result>
+		</action>
+		<action name="pay_promocards" class="zqu.neuedu.front.action.HelpAction" method="pay_promocards">
+			<result name="pay_promocards">/WEB-INF/front/help/pay_promocards.jsp</result>
+		</action>
+		<action name="pay_balance" class="zqu.neuedu.front.action.HelpAction" method="pay_balance">
+			<result name="pay_balance">/WEB-INF/front/help/pay_balance.jsp</result>
+		</action>
+	</package>
+	
+</struts>

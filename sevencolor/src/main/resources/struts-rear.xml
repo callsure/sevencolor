@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="loginPackage" extends="struts-default" namespace="/">
+		<!-- 后台界面登录前可以进行的action操作 -->
+		<action name="loginMS" class="zqu.neuedu.rear.action.AdminAction" method="loginPage">
+			<result name="login">/WEB-INF/rear/loginMS.jsp</result>
+		</action>
+		<action name="verifyCode" class="zqu.neuedu.rear.action.VerifyCodeAction" method="getVerifyCode">
+		</action>
+		<action name="loginOut" class="zqu.neuedu.rear.action.AdminAction" method="loginOutPage">
+			<result name="login">/WEB-INF/rear/loginMS.jsp</result>
+		</action>
+		<action name="emailReset" class="zqu.neuedu.rear.action.AdminAction" method="emailReset">
+			<result name="adminPassReset">/WEB-INF/rear/adminPassReset.jsp</result>
+		</action>
+		<!-- 错误界面模块 -->
+		<action name="goto403Page" class="zqu.neuedu.rear.action.ErrorAction" method="goto403Page">
+			<result name="error403">/WEB-INF/rear/error403.jsp</result>
+		</action>
+		<action name="goto404Page" class="zqu.neuedu.rear.action.ErrorAction" method="goto404Page">
+			<result name="error404">/WEB-INF/rear/error404.jsp</result>
+		</action>
+		<action name="goto405Page" class="zqu.neuedu.rear.action.ErrorAction" method="goto405Page">
+			<result name="error405">/WEB-INF/rear/error405.jsp</result>
+		</action>
+		<action name="goto500Page" class="zqu.neuedu.rear.action.ErrorAction" method="goto500Page">
+			<result name="error500">/WEB-INF/rear/error500.jsp</result>
+		</action>
+		
+	</package>
+	<!-- 登录后可以进行的操作 -->
+	<package name="commonPackage" extends="struts-default"  namespace="/MSCommon">
+		<action name="gotoIndexPage" class="zqu.neuedu.rear.action.AdminAction" method="gotoIndexPage">
+			<result name="index">/WEB-INF/rear/indexMS.jsp</result>
+		</action>
+		<action name="changePasswd" class="zqu.neuedu.rear.action.AdminAction" method="changePasswdPage">
+			<result name="changepasswd">/WEB-INF/rear/infoAdminPasswd.jsp</result>
+		</action>
+		<!-- 个人信息修改 -->
+		<action name="adminDetailInfoPage" class="zqu.neuedu.rear.action.AdminAction" method="gotoAdminDetailInfoPage">
+			<result name="adminDetailInfo">/WEB-INF/rear/adminDetailInfo.jsp</result>
+		</action>
+		
+		<!-- 前台用户管理模块 -->
+		<action name="userDetailInfoPage" class="zqu.neuedu.rear.action.UserAction" method="gotoUserDetailInfoPage">
+			<result name="userDetailInfo">/WEB-INF/rear/userDetailInfo.jsp</result>
+		</action>
+		<action name="userListPage" class="zqu.neuedu.rear.action.UserAction" method="gotoUserListPage">
+			<result name="userList">/WEB-INF/rear/userList.jsp</result>
+		</action>
+		<!-- 订单管理模块 -->
+		<action name="orderListPage" class="zqu.neuedu.rear.action.OrderAction" method="gotoOrderListPage">
+			<result name="orderList">/WEB-INF/rear/orderList.jsp</result>
+		</action>
+		<action name="orderInfoPage" class="zqu.neuedu.rear.action.OrderAction" method="gotoOrderInfoPage">
+			<result name="orderInfo">/WEB-INF/rear/orderInfo.jsp</result>
+		</action>
+		<!-- 图表展示-团购 -->
+		<action name="orderChartGrouponPage" class="zqu.neuedu.rear.action.ChartAction" method="gotoOrderChartGrouponPage">
+			<result name="orderChartGroupon">/WEB-INF/rear/orderChartGroupon.jsp</result>
+		</action>
+		<!-- 团购管理模块 -->
+		<action name="grouponInfoPage" class="zqu.neuedu.rear.action.GrouponAction" method="gotoGrouponInfoPage">
+			<result name="grouponInfo">/WEB-INF/rear/grouponInfo.jsp</result>
+		</action>
+		<action name="grouponListPage" class="zqu.neuedu.rear.action.GrouponAction" method="gotoGrouponListPage">
+			<result name="grouponList">/WEB-INF/rear/grouponList.jsp</result>
+		</action>
+		<!-- 评论管理模块 -->
+		<action name="commentListPage" class="zqu.neuedu.rear.action.CommentAction" method="gotoCommentListPage">
+			<result name="commentList">/WEB-INF/rear/commentList.jsp</result>
+		</action>
+		<!-- 店铺管理模块 -->
+		<action name="storeInfoPage" class="zqu.neuedu.rear.action.StoreAction" method="gotoStoreInfoPage">
+			<result name="storeInfo">/WEB-INF/rear/storeInfo.jsp</result>
+		</action>
+		<action name="storeListPage" class="zqu.neuedu.rear.action.StoreAction" method="gotoStoreListPage">
+			<result name="storeList">/WEB-INF/rear/storeList.jsp</result>
+		</action>
+		<!-- 商品管理模块 -->
+		<action name="goodsInfoPage" class="zqu.neuedu.rear.action.GoodsAction" method="gotoGoodsInfoPage">
+			<result name="goodsInfo">/WEB-INF/rear/goodsInfo.jsp</result>
+		</action>
+		<action name="goodsListPage" class="zqu.neuedu.rear.action.GoodsAction" method="gotoGoodsListPage">
+			<result name="goodsList">/WEB-INF/rear/goodsList.jsp</result>
+		</action>
+	</package>
+	<!-- 权限控制URL -->
+	<package name="rearPackage" extends="struts-default" namespace="/MSAdmin">
+		<!-- 后台界面登录后可以进行的action操作 -->
+	<!--	<action name="loginIndexPage" class="zqu.neuedu.rear.action.AdminAction" method="loginIndexPage">
+			<result name="login">/WEB-INF/rear/loginMS.jsp</result>
+			<result name="index">/WEB-INF/rear/indexMS.jsp</result>
+		</action>
+	  -->
+		<!-- 前台用户管理模块 -->
+		<action name="userInfoPage" class="zqu.neuedu.rear.action.UserAction" method="gotoUserInfoPage">
+			<result name="userInfo">/WEB-INF/rear/userInfo.jsp</result>
+		</action>
+		<!-- 图表展示-公司 -->
+		<action name="orderChartCompanyPage" class="zqu.neuedu.rear.action.ChartAction" method="gotoOrderChartCompanyPage">
+			<result name="orderChartCompany">/WEB-INF/rear/orderChartCompany.jsp</result>
+		</action>
+		<!--后台用户-角色-权限模块 -->
+		<action name="adminInfoPage" class="zqu.neuedu.rear.action.AdminAction" method="gotoAdminInfoPage">
+			<result name="adminInfo">/WEB-INF/rear/adminInfo.jsp</result>
+		</action>
+		<action name="adminListPage" class="zqu.neuedu.rear.action.AdminAction" method="gotoAdminListPage">
+			<result name="adminList">/WEB-INF/rear/adminList.jsp</result>
+		</action>
+		<action name="authorityInfoPage" class="zqu.neuedu.rear.action.AuthorityAction" method="gotoAuthorityInfoPage">
+			<result name="authorityInfo">/WEB-INF/rear/authorityInfo.jsp</result>
+		</action>
+		<action name="authorityListPage" class="zqu.neuedu.rear.action.AuthorityAction" method="gotoAuthorityListPage">
+			<result name="authorityList">/WEB-INF/rear/authorityList.jsp</result>
+		</action>
+		<action name="roleInfoPage" class="zqu.neuedu.rear.action.RoleAction" method="gotoRoleInfoPage">
+			<result name="roleInfo">/WEB-INF/rear/roleInfo.jsp</result>
+		</action>
+		<action name="roleListPage" class="zqu.neuedu.rear.action.RoleAction" method="gotoRoleListPage">
+			<result name="roleList">/WEB-INF/rear/roleList.jsp</result>
+		</action>
+		<!-- 分类管理模块 -->
+		<action name="classifyInfoPage" class="zqu.neuedu.rear.action.ClassifyAction" method="gotoClassifyInfoPage">
+			<result name="classifyInfo">/WEB-INF/rear/classifyInfo.jsp</result>
+		</action>
+		<action name="classifyListPage" class="zqu.neuedu.rear.action.ClassifyAction" method="gotoClassifyListPage">
+			<result name="classifyList">/WEB-INF/rear/classifyList.jsp</result>
+		</action>
+		<!-- 详细分类管理模块 -->
+		<action name="reclassifyInfoPage" class="zqu.neuedu.rear.action.ReclassifyAction" method="gotoReclassifyInfoPage">
+			<result name="reclassifyInfo">/WEB-INF/rear/reclassifyInfo.jsp</result>
+		</action>
+		<action name="reclassifyListPage" class="zqu.neuedu.rear.action.ReclassifyAction" method="gotoReclassifyListPage">
+			<result name="reclassifyList">/WEB-INF/rear/reclassifyList.jsp</result>
+		</action>
+		<!-- 公司 -->
+		<action name="companyInfoPage" class="zqu.neuedu.rear.action.CompanyAction" method="gotoCompanyInfoPage">
+			<result name="companyInfo">/WEB-INF/rear/companyInfo.jsp</result>
+		</action>
+		<action name="companyDetailInfoPage" class="zqu.neuedu.rear.action.CompanyAction" method="gotoCompanyDetailInfoPage">
+			<result name="companyDetailInfo">/WEB-INF/rear/companyDetailInfo.jsp</result>
+		</action>
+		<action name="companyListPage" class="zqu.neuedu.rear.action.CompanyAction" method="gotoCompanyListPage">
+			<result name="companyList">/WEB-INF/rear/companyList.jsp</result>
+		</action>
+		<!-- 开店申请管理 -->
+		<action name="applyListPage" class="zqu.neuedu.rear.action.ApplyAction" method="gotoApplyListPage">
+			<result name="applyList">/WEB-INF/rear/applyList.jsp</result>
+		</action>
+		<action name="applyInfoPage" class="zqu.neuedu.rear.action.ApplyAction" method="gotoApplyInfoPage">
+			<result name="applyInfo">/WEB-INF/rear/applyInfo.jsp</result>
+		</action>
+
+		<!-- shrec -->
+		<!-- 城市管理模块 -->
+		<action name="cityInfoPage" class="zqu.neuedu.rear.action.CityAction" method="gotoCityInfoPage">
+			<result name="cityInfo">/WEB-INF/rear/cityInfo.jsp</result>
+		</action>
+		<action name="cityListPage" class="zqu.neuedu.rear.action.CityAction" method="gotoCityListPage">
+			<result name="cityList">/WEB-INF/rear/cityList.jsp</result>
+		</action>
+
+		<!-- 区域管理模块 -->
+		<action name="areaInfoPage" class="zqu.neuedu.rear.action.AreaAction" method="gotoAreaInfoPage">
+			<result name="areaInfo">/WEB-INF/rear/areaInfo.jsp</result>
+		</action>
+		<action name="areaListPage" class="zqu.neuedu.rear.action.AreaAction" method="gotoAreaListPage">
+			<result name="areaList">/WEB-INF/rear/areaList.jsp</result>
+		</action>
+		<action name="indexSetting" class="zqu.neuedu.rear.action.SettingAction" method="gotoIndexSettingPage">
+			<result name="indexSetting">/WEB-INF/rear/indexSetting.jsp</result>
+		</action>
+
+	</package>
+</struts>

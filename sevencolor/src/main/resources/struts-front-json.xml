@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="frontJsonPackage" extends="json-default" namespace="/">
+		<!-- 管理员列表Ajax获取数据 -->
+		<action name="user_login" class="zqu.neuedu.front.action.UserAction" method="userLogin">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="user_regist" class="zqu.neuedu.front.action.UserAction" method="userRegist">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="user_valid_email" class="zqu.neuedu.front.action.UserAction" method="getUserByEmail">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="user_valid_username" class="zqu.neuedu.front.action.UserAction" method="getUserByUsername">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="user_valid_phone" class="zqu.neuedu.front.action.UserAction" method="getUserByPhone">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="change_city_search" class="zqu.neuedu.front.action.CityAreaAction" method="changeCitySearch">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="get_company_info" class="zqu.neuedu.front.action.CompanyAction" method="getCompanyInfo">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="get_store_list" class="zqu.neuedu.front.action.GrouponAction" method="grouponInfoGetStoreList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="change_city_post" class="zqu.neuedu.front.action.CityAreaAction" method="changeCityPost">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 团购详细页中列表和 套餐详情 获取 -->
+		<action name="groupgoods" class="zqu.neuedu.front.action.GrouponAction" method="groupgoodsGetListByGroupId">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="groupmap" class="zqu.neuedu.front.action.GrouponAction" method="groupmapGetListByGroupId">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="ajax_comment" class="zqu.neuedu.front.action.CommentAction" method="getCommentList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- ajax验证邮箱或手机 -->
+		<action name="check_mailorhp" class="zqu.neuedu.front.action.UserAction" method="check_mailorhp">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="search" class="zqu.neuedu.front.action.SearchAction" method="searchData">
+			<result name="success" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+	</package>
+	
+	<!-- 购物车 -->
+	<package name="cartjsonPackage" extends="json-default" namespace="/i/cart">
+		<action name="ajax_add" class="zqu.neuedu.front.action.CartAction" method="addToCart">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="ajax_update" class="zqu.neuedu.front.action.CartAction" method="updateCart">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="clear" class="zqu.neuedu.front.action.CartAction" method="clearCart">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="get_data" class="zqu.neuedu.front.action.CartAction" method="getCartData">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+	</package>	
+	
+	<!-- 订单 -->
+	<package name="orderpayPackage" extends="json-default" namespace="/i/order">
+		<action name="payfor" class="zqu.neuedu.front.action.OrderAction" method="payforOrders">
+			<result name="payfor">/WEB-INF/front/login/payfor.jsp</result>
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="payfors" class="zqu.neuedu.ws.action.BaoZouBankAction" method="gotoBaoZouBankPayPage">
+			<result name="baoZouBankPay">/WEB-INF/front/login/baozouBank_pay.jsp</result>
+		</action>
+		<action name="ajax_pay" class="zqu.neuedu.ws.action.BaoZouBankAction" method="baoZouBankPay">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="del" class="zqu.neuedu.front.action.OrderAction" method="delOrder">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="iused" class="zqu.neuedu.front.action.OrderAction" method="confirmUsedOrder">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="ajax_order" class="zqu.neuedu.front.action.OrderAction" method="ajaxToOrder">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		
+	</package>
+	
+	<!-- 评论订单 -->
+	<package name="commPackage" extends="json-default" namespace="/i/comm">
+		<action name="ajax_comment" class="zqu.neuedu.front.action.CommentAction" method="commentOrder">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		
+	</package>
+	
+	<package name="userJsonPackage" extends="json-default" namespace="/user">
+		<action name="addressInfoAUAddress" class="zqu.neuedu.front.action.AddressAction" method="addressInfoAUAddress">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="addressListGetList" class="zqu.neuedu.front.action.AddressAction" method="addressListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="addressListDeleteAddress" class="zqu.neuedu.front.action.AddressAction" method="addressListDeleteAddress">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="addressUpdate" class="zqu.neuedu.front.action.AddressAction" method="addressUpdate">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 收藏    -->
+		<action name="favoriteListGetList" class="zqu.neuedu.front.action.FavoriteAction" method="favoriteListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="ifUserfav" class="zqu.neuedu.front.action.FavoriteAction" method="ifUserFavorite">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="favoriteListDeleteFavorite" class="zqu.neuedu.front.action.FavoriteAction" method="favoriteListDeleteFavorite">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>	
+		<action name="favoriteInfoAUFavorite" class="zqu.neuedu.front.action.FavoriteAction" method="favoriteInfoAUFavorite">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="favoriteCountNum" class="zqu.neuedu.front.action.FavoriteAction" method="favoriteCountNum">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- ajax修改用户密码 -->
+		<action name="reset_passwd" class="zqu.neuedu.front.action.ResetAction" method="resetUserPasswd">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		
+	</package>
+	
+	<package name="frontIndexJsonPackage" extends="json-default" namespace="/indexJson">
+		<!-- 分类 -->
+		<action name="classifyListGetListOrderByWeight" class="zqu.neuedu.front.action.ClassifyAction" method="classifyListGetListOrderByWeight">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="reclassifyListGetListByClaId" class="zqu.neuedu.front.action.ReclassifyAction" method="reclassifyListGetListByClaId">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		
+		<!-- 区域 -->
+		<action name="areaListGetListOrderByWeight" class="zqu.neuedu.front.action.AreaAction" method="areaListGetListOrderByWeight">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 用户 -->
+		<action name="userUpdateUserInfo" class="zqu.neuedu.front.action.UserAction" method="userUpdateUserInfo">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<!-- 团购商品 -->
+		<action name="grouponListGetList" class="zqu.neuedu.front.action.GrouponAction" method="grouponListGetList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="grouponListGetListNum" class="zqu.neuedu.front.action.GrouponAction" method="grouponListGetListNum">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="groupListGetListByStore" class="zqu.neuedu.front.action.GrouponAction" method="groupListGetListByStore">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+	</package>
+</struts>
