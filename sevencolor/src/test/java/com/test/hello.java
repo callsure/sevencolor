@@ -26,5 +26,6 @@ public class hello {
 	private String ll;
 	private String uu;
 	private String tt;
+	private String yy;
 
 }
