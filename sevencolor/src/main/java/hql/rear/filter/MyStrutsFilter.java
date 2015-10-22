@@ -16,7 +16,6 @@ public class MyStrutsFilter extends StrutsPrepareAndExecuteFilter {
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException,
 			ServletException {
-		String jj;
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
 		// 不过滤的url
